@@ -1,0 +1,36 @@
+--[[ 
+Player Locator Script com Distância Inteira
+===========================================
+Este script exibe indicadores sobre outros jogadores no Roblox, com distância 
+mostrada em números inteiros e formato otimizado para dispositivos móveis.
+
+Funcionalidades:
+- Amarelo: Jogadores distantes.
+- Roxo: Jogadores próximos.
+- Distância exibida como um número inteiro (em metros).
+
+Como usar:
+1. Insira este script em StarterPlayer > StarterPlayerScripts no Roblox Studio.
+2. Configure o limiar de distância (DistanceThreshold) conforme necessário.
+3. Teste no Roblox Studio para verificar o funcionamento.
+
+Licença: MIT
+]]
+
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+
+local LocalPlayer = Players.LocalPlayer
+local DistanceThreshold = 10 -- Distância para mudar de amarelo para roxo
+
+-- Cria o indicador para um jogador-alvo
+local function createIndicator(target)
+    local billboard = Instance.new("BillboardGui")
+    billboard.Size = UDim2.new(2, 0, 2, 0) -- Tamanho do indicador
+    billboard.AlwaysOnTop = true
+    billboard.Adornee = target.Character:WaitForChild("HumanoidRootPart")
+    billboard.Parent = target.Character
+
+    -- Quadro principal do indicador
+    local frame = Instance.new("Frame")
+    frame.Size = UDim2
